@@ -1,0 +1,30 @@
+[project]
+name = "final-drive"
+version = "0.1.0"
+description = "Original daily NFL play-calling game: data pipeline + reference simulator"
+requires-python = ">=3.12"
+dependencies = [
+    "nflreadpy>=0.1",
+    "polars>=1.0",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "pyarrow>=15",
+    "scikit-learn>=1.4",
+    "lightgbm>=4.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["sim/tests", "pipeline/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.uv]
+package = false

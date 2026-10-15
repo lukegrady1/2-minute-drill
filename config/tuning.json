@@ -1,0 +1,191 @@
+{
+  "_comment": "Single source of tunable numbers from PLAN.md. Python (pipeline/, sim/) and TypeScript (engine/, web/) both read this file. Every value here is a starting point to tune, not a fact.",
+  "game": {
+    "name": "Final Drive",
+    "launch_date": "2026-10-15",
+    "disclaimer": "Not affiliated with the NFL or its teams. Data from nflverse."
+  },
+  "seasons": {
+    "ingest_first": 2016,
+    "ingest_last": 2026,
+    "spots_first": 2023,
+    "ftn_first": 2022
+  },
+  "pipeline": {
+    "seed": 20261015,
+    "_comment": "seed for the deterministic draws the pipeline makes (e.g. assigning a depth bucket to sacks)"
+  },
+  "spots": {
+    "q4_max_seconds_left": 150,
+    "q2_max_seconds_left": 120,
+    "one_score_max_margin": 8,
+    "target_count": 700,
+    "featured_count": 20,
+    "schedule_days": 365,
+    "spots_per_chunk": 20
+  },
+  "playbook": {
+    "min_bucket_size": 30,
+    "light_box_max": 6,
+    "blitz_min_rushers": 5,
+    "depth_buckets": {
+      "short_max_air_yards": 9,
+      "medium_max_air_yards": 19
+    },
+    "nflverse_pass_length_split": 15
+  },
+  "grading": {
+    "round1_sims": 600,
+    "round2_sims": 3000,
+    "round2_top_k": 3,
+    "green_max_gap": 0.01,
+    "yellow_max_gap": 0.04,
+    "personnel_alt_count": 4,
+    "personnel_sims": 300,
+    "exclude_gadget_from_better_call": true
+  },
+  "percentile": {
+    "virtual_callers": 2000,
+    "tau_log_uniform_min": 0.003,
+    "tau_log_uniform_max": 0.3,
+    "pure_league_frequency_share": 0.15
+  },
+  "adaptive_defense": {
+    "k": 2.0,
+    "recent_calls_window": 6,
+    "recency_decay": 0.7,
+    "announce_min_streak": 4
+  },
+  "clock": {
+    "play_clock_seconds": 40,
+    "two_minute_warning_seconds": 120,
+    "ob_stops_clock_inside_q2_seconds": 120,
+    "ob_stops_clock_inside_q4_seconds": 300,
+    "tempo_seconds": {
+      "no_huddle": 15,
+      "normal": 30,
+      "milk": 40
+    }
+  },
+  "rules": {
+    "kickoff_touchback_yardline": 35,
+    "kickoff_safety_kick_touchback_yardline": 20,
+    "overtime": {
+      "regular_season_minutes": 10,
+      "playoff_minutes": 15,
+      "regular_season_timeouts": 2,
+      "playoff_timeouts": 3,
+      "both_teams_possess": true,
+      "regular_season_can_tie": true
+    }
+  },
+  "workers": {
+    "desktop_max": 3,
+    "phone_max": 2
+  },
+  "ratings": {
+    "min": 40,
+    "max": 99,
+    "typical_starter": 77,
+    "color_stops": {
+      "red_max": 60,
+      "yellow": 77,
+      "green_min": 90
+    }
+  },
+  "motion": {
+    "physics_hz": 60,
+    "snap_time_s": 0.25,
+    "ball_speed_yd_s": 24,
+    "brake_factor": 1.4,
+    "backpedal_speed_factor": 0.6,
+    "hip_turn_cost_s": 0.25,
+    "reaction_delay_s": {
+      "min": 0.15,
+      "max": 0.35
+    },
+    "rating_scale_pct": 0.05,
+    "separation_distance_yd": 0.8,
+    "block_spring_distance_yd": 0.6,
+    "pocket_depth_growth_yd_s": 1.0,
+    "punt_hang_time_s": 4.25,
+    "launch_angle_deg": {
+      "line_drive": 12,
+      "deep_shot": 35
+    },
+    "positions": {
+      "WR": {
+        "v_max": 10.0,
+        "a_max": 5.0,
+        "a_lat": 7.0,
+        "mass_lb": 195
+      },
+      "CB": {
+        "v_max": 10.0,
+        "a_max": 5.0,
+        "a_lat": 7.0,
+        "mass_lb": 195
+      },
+      "RB": {
+        "v_max": 9.5,
+        "a_max": 5.0,
+        "a_lat": 7.0,
+        "mass_lb": 210
+      },
+      "S": {
+        "v_max": 9.5,
+        "a_max": 5.0,
+        "a_lat": 7.0,
+        "mass_lb": 210
+      },
+      "TE": {
+        "v_max": 8.9,
+        "a_max": 4.3,
+        "a_lat": 6.0,
+        "mass_lb": 245
+      },
+      "LB": {
+        "v_max": 8.9,
+        "a_max": 4.3,
+        "a_lat": 6.0,
+        "mass_lb": 245
+      },
+      "QB": {
+        "v_max": 8.7,
+        "a_max": 4.2,
+        "a_lat": 6.0,
+        "mass_lb": 220
+      },
+      "DE": {
+        "v_max": 8.4,
+        "a_max": 4.0,
+        "a_lat": 5.0,
+        "mass_lb": 265
+      },
+      "OL": {
+        "v_max": 7.3,
+        "a_max": 3.4,
+        "a_lat": 4.0,
+        "mass_lb": 310
+      },
+      "DT": {
+        "v_max": 7.3,
+        "a_max": 3.4,
+        "a_lat": 4.0,
+        "mass_lb": 310
+      },
+      "K": {
+        "v_max": 8.0,
+        "a_max": 4.0,
+        "a_lat": 5.0,
+        "mass_lb": 200
+      },
+      "P": {
+        "v_max": 8.0,
+        "a_max": 4.0,
+        "a_lat": 5.0,
+        "mass_lb": 210
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "_comment": "Hand-picked famous drives keyed by spot id (game_id + _d + fixed_drive). Write the 1-2 sentence story yourself; PLAN.md asks for about 20. Entries whose key is not in the spot pool are ignored. The schedule does not yet swap these in on 'featured days'.",
+  "_todo": "Luke: pick ~20 spot ids from web/public/data/game.json and write the stories."
+}

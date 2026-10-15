@@ -1,0 +1,11 @@
+name = "final-drive-api"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "final-drive"
+database_id = "REPLACE-WITH-YOUR-D1-ID"
+
+[vars]
+ALLOWED_ORIGIN = "https://your-domain.example"

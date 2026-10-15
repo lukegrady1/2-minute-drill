@@ -1,0 +1,27 @@
+name: weekly data refresh
+on:
+  schedule:
+    - cron: "0 9 * * 2"   # Tuesdays 09:00 UTC during the season (nflverse updates nightly)
+  workflow_dispatch:
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: uv sync
+      - run: uv run python pipeline/ingest.py pull --seasons 2025-2026
+      - run: uv run python pipeline/playbook.py build
+      - run: uv run python pipeline/spots.py build
+      - run: uv run python pipeline/wp_model.py
+      - run: uv run python pipeline/coaches.py
+      - run: uv run python pipeline/ratings.py
+      - run: uv run python pipeline/export.py
+      - run: uv run python scripts/build.py
+      - run: uv run pytest -q
+      - run: uv run python sim/parity_dump.py && npm ci && npm run parity && npm run build
+      - uses: actions/upload-artifact@v4
+        with: { name: site, path: web/dist }
+      # deploy step: `npx wrangler pages deploy web/dist --project-name final-drive` with CLOUDFLARE_API_TOKEN
